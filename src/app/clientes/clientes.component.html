@@ -1,20 +1,22 @@
 <div class="card border-primary my-3">
     <div class="card-header">Clientes</div>
     <div class="card-body text-primary">
-        <h5 class="card-title">Listado de Clientes</h5>
+        <h5 class="card-title text-center">Listado de Clientes</h5>
 
-        <div class="my-2 text-left">
+        <div class="my-2 pb-2 text-left">
             <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/clientes/form']" routerLinkActive="router-link-active" >Nuevo Cliente</button>
         </div>
 
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th>Id</th>
+                    <th>#</th>
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Email</th>
                     <th>Fecha</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody *ngFor="let cliente of clientes">
@@ -24,6 +26,8 @@
                     <td>{{ cliente.apellido }}</td>
                     <td>{{ cliente.email }}</td>
                     <td>{{ cliente.fecha }}</td>
+                    <td class="text-center"><button type="button" name="button" [routerLink]="['/clientes/form',cliente.id]" class="btn btn-primary btn-sm" routerLinkActive="router-link-active" >Editar</button></td>
+                    <td class="text-center"><button type="button" name="button" class="btn btn-danger btn-sm" (click)="delete(cliente)">Eliminar</button></td>
                 </tr>
             </tbody>
         </table>
